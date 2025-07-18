@@ -1,0 +1,38 @@
+/* Centered container box */
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+}
+
+.logout-box {
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.logout-box h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.logout-box a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    color: #ffffff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.logout-box a:hover {
+    background-color: #0056b3;
+}

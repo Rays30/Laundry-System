@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* ADDED: Ensure html and body take full viewport height and don't scroll */
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent global scrollbar */
+}
+
+body {
+    min-height: 100vh; /* This can stay, but height: 100% on html/body is primary */
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+h1,
+h2 {
+    color: #444;
+}
+h3 {
+    color: #999;
+}
+.btn {
+    background: #f05462;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+}
+.btn:hover {
+    color: #f05462;
+    background: white;
+    padding: 3px 8px;
+    border: 2px solid #f05462;
+}
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 10px;
+    border-bottom: 2px solid #999;
+}
+table {
+    padding: 10px;
+}
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+.side-menu {
+    position: fixed;
+    width: 250px; /* Fixed pixel width for sidebar */
+    background: #333333;
+    z-index: 2; /* Ensure it's above other content */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu .brand-name {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.side-menu li {
+    font-size: 20px; /* Slightly reduce font size to help fit */
+    padding: 10px 20px; /* Reduced horizontal padding */
+    color: gray;
+    display: flex;
+    white-space: nowrap; /* Prevent text from wrapping */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.side-menu li span {
+    color: #7a8886;  /* Set the color of the text */
+    margin-left: 5px; /* Add space between text and arrow */
+}
+
+.side-menu li span:last-child {
+    margin-left: auto; /* Push the arrow to the right side */
+}
+
+.side-menu li:hover {
+    background: white;
+    color: #f05462;
+}
+
+.side-menu ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%; /* Ensures the link spans the entire list item */
+}
+
+.side-menu ul li a img {
+    width: 2rem; /* Adjust width as needed */
+    margin-right: 10px; /* Adjust space between image and text */
+}
+    
+
+.container {
+    position: absolute;
+    left: 250px; /* Start content after fixed sidebar width */
+    width: calc(100vw - 250px); /* Fill remaining width */
+    height: 100vh; /* Container takes full height */
+    background: #f1f1f1;
+}
+.container .header {
+    position: fixed;
+    top: 0;
+    left: 250px; /* Match container's left offset */
+    width: calc(100vw - 250px); /* Match container's width */
+    height: 10vh;
+    background: #7a8886;
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: center; /* Vertically center the content */
+    padding-left: 20px; /* Add some space from the left edge */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.container .header h2 {
+    margin: 0; /* Remove default margin */
+    font-size: 24px; /* Adjust font size if needed */
+}
+.container .header .nav {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.container .content {
+    position: relative;
+    margin-top: 10vh; /* Space below header */
+    height: calc(100vh - 10vh); /* REMOVED min-height, set explicit height */
+    background: #f1f1f1;
+    overflow: hidden; /* Prevent this div from scrolling */
+}
+.container .content .cards {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+.container .content .cards .card {
+    width: 250px;
+    height: 150px;
+    background: white;
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container .content .content-2 { /* This rule seems unused based on provided dashboard.php */
+    min-height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.container .content .content-2 .recent-payments { /* This rule seems unused */
+    min-height: 50vh;
+    flex: 5;
+    background: white;
+    margin: 0 25px 25px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+.container .content .content-2 .new-students { /* This rule seems unused */
+    flex: 2;
+    background: white;
+    min-height: 50vh;
+    margin: 0 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+.container .content .content-2 .new-students table td:nth-child(1) img { /* This rule seems unused */
+    height: 40px;
+    width: 40px;
+}
+@media screen and (max-width: 1050px) {
+    .side-menu li {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 940px) {
+    /* Adjust sidebar for smaller screens */
+    .side-menu {
+        width: 60px; /* Collapse sidebar to just icons */
+        align-items: center;
+    }
+    .side-menu li {
+        padding: 10px 0; /* Remove horizontal padding */
+        justify-content: center;
+    }
+    .side-menu li span:not(:last-child) { /* Target text, not arrow */
+        display: none; /* Hide text */
+    }
+    .side-menu li span:last-child {
+        display: none; /* Hide arrows too */
+    }
+    .side-menu .brand-name h1 {
+        display: none; /* Hide dashboard title */
+    }
+    .container, .container .header {
+        left: 60px; /* Adjust main content to start after collapsed sidebar */
+        width: calc(100vw - 60px);
+    }
+}
+
+@media screen and (max-width: 536px) {
+    /* On very small screens, make sidebar static and full width */
+    .side-menu {
+        position: static; /* No longer fixed */
+        width: 100%; /* Full width */
+        min-height: auto; /* Height adapts to content */
+        flex-direction: row; /* Layout items horizontally */
+        justify-content: space-around; /* Distribute items */
+        padding: 10px 0;
+    }
+    .side-menu .brand-name {
+        display: none; /* Hide brand name on very small screens */
+    }
+    .side-menu ul {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center;
+        width: 100%;
+    }
+    .side-menu li {
+        font-size: 14px; /* Smaller font for mobile */
+        padding: 5px 10px;
+        white-space: normal; /* Allow text to wrap if necessary */
+        flex-direction: column; /* Stack icon and text vertically */
+    }
+    .side-menu li span:not(:last-child) {
+        display: block; /* Show text again */
+        margin-left: 0;
+        text-align: center;
+    }
+    .side-menu li span:last-child {
+        display: none; /* Hide arrows still */
+    }
+    .side-menu ul li a img {
+        width: 25px; /* Smaller icons */
+        height: 25px;
+        margin-right: 0;
+        margin-bottom: 5px; /* Space between icon and text */
+    }
+    .container {
+        position: static; /* No longer absolute */
+        width: 100vw; /* Full width */
+        min-height: auto;
+        padding-top: 10px; /* Add some top padding as header is now above */
+    }
+    .container .header {
+        position: static; /* No longer fixed */
+        width: 100vw; /* Full width */
+        padding-left: 10px;
+        height: auto; /* Height adapts to content */
+        flex-direction: column; /* Stack header items */
+        align-items: flex-start;
+    }
+    .container .header h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .container .header .user-icons {
+        width: 100%;
+        justify-content: flex-end; /* Push user icon to right */
+        margin-right: 10px;
+    }
+    .container .content .cards {
+        flex-direction: column; /* Stack cards vertically */
+    }
+    .container .content .cards .card {
+        width: 90%; /* Make cards wider on small screens */
+        margin: 10px auto;
+    }
+    #main-content-area {
+        padding: 10px; /* Adjust padding for loaded content */
+        min-height: auto;
+        /* For mobile, if the main-content-area is static, allow it to scroll naturally */
+        overflow-y: visible; /* Or auto if you want internal scrolling */
+    }
+}
+
+/* Modal and Dropdown styles (kept for completeness) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px; /* Set max width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}

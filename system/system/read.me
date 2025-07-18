@@ -1,0 +1,85 @@
+<?php
+session_start(); // Start the session
+
+// Include database connection
+include 'db_connect.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Check if user exists in the database
+    $sql = "SELECT * FROM userregistration WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $userregistration = $result->fetch_assoc();
+
+        // Check if user is found and verify the password
+        if ($userregistration && password_verify($password, $userregistration['password'])) {
+            // Store user info in session
+            $_SESSION['userid'] = $userregistration['userid'];
+            $_SESSION['fullname'] = $userregistration['fullname']; // Fixed the session variable name
+
+            // Redirect the user to a welcome page or dashboard
+            // header("Location: ../system/user_dashboard.php");
+            exit(); // Stop script execution after redirection
+        } else {
+            echo "Invalid email or password.";
+        }
+
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
+    }
+}
+$conn->close();
+?>
+
+
+
+//register
+<?php
+include 'db_connect.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = $_POST['fullname']; // Change 'username' to 'fullname' to match form field name
+    $email = $_POST['email'];
+    $mobilenumber = $_POST['mobilenumber']; // Added missing semicolon
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+
+    // Check if email already exists
+    $check_email = "SELECT email FROM userregistration WHERE email = ?";
+    $stmt = $conn->prepare($check_email);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        echo "Email is already registered!";
+    } else {
+        // Insert the new user if email is not found
+        $sql = "INSERT INTO userregistration (fullname, email, mobilenumber, password) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("ssss", $fullname, $email, $mobilenumber, $password); // Corrected bind_param
+
+            if ($stmt->execute()) {
+                echo "Registration successful! You can now <a href='login.php'>login</a>";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            echo "Error preparing statement: " . $conn->error;
+        }
+    }
+
+    $conn->close();
+}
+?>

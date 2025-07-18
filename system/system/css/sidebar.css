@@ -1,0 +1,57 @@
+.side-menu {
+    position: fixed;
+    background: #333333;
+    width: 20vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu .brand-name {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.side-menu li {
+    font-size: 24px;
+    padding: 10px 40px;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns items to the left */
+}
+
+.side-menu li span {
+    color: #7a8886;  /* Set the color of the text */
+    margin-left: 5px; /* Add space between text and arrow */
+}
+
+.side-menu li span:last-child {
+    margin-left: auto; /* Push the arrow to the right side */
+}
+
+.side-menu li:hover {
+    background: white;
+    color: #f05462;
+}
+
+.side-menu ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%; /* Ensures the link spans the entire list item */
+}
+
+.side-menu ul li a img {
+    width: 2rem; /* Adjust width as needed */
+    margin-right: 10px; /* Adjust space between image and text */
+}
+    

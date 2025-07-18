@@ -1,0 +1,530 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+    flex: 1; /* Aligns <h1> to the left */
+}
+
+header nav {
+    flex: 2; /* Centers nav by using space */
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    position: relative;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+.btn-user {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-user a {
+    color: #ffffff; /* Text color */
+    background-color: #333; /* Button background color */
+    padding: 8px 16px; /* Padding around the text */
+    border-radius: 4px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.btn-user a:hover {
+    background-color: #555; /* Darker color on hover */
+}
+
+
+
+/* Dropdown menu styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    min-width: 180px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Contact button styles */
+.contact-btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Info section with form */
+.info-section {
+    background-image: url('../img/bubbles1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    /* background-size: 100%; */
+    color: black;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.info-content {
+    padding-left: 150px;
+    text-align: center;
+    max-width: 600px;
+}
+
+.heading-container {
+    position: relative;
+    width: 100%;
+    height: 120px; /* Adjust based on heading size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-content h2 {
+    font-size: 45px; /* Increase this value as needed */
+    letter-spacing: 2px; /* Adjust spacing between letters */
+    font-weight: bold; /* Optional: keep it bold for emphasis */
+    position: absolute;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    header nav ul {
+        gap: 15px;
+    }
+    .info-content h2 {
+        font-size: 55px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    header nav ul {
+        margin-right: 0;
+        gap: 10px;
+    }
+    .info-section {
+        flex-direction: column;
+        padding: 30px 15px;
+        height: auto;
+    }
+    .info-content {
+        max-width: 100%;
+    }
+    .info-content h2 {
+        font-size: 50px;
+        margin-top: 50px;
+    }
+    .button-group {
+        text-align: center;
+    }
+    .form-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 20px;
+    }
+    .info-content h2 {
+        font-size: 40px;
+    }
+    .info-content .main-text {
+        font-size: 25px;
+    }
+    .button-group button {
+        width: 100%;
+    }
+    .form-container {
+        margin: 20px 0;
+        width: 90%; 
+    }
+}
+
+
+.first {
+    color: transparent;
+    -webkit-text-stroke: 2px #000000;
+}
+
+.second {
+    color: #05a8f3;
+    -webkit-text-stroke: 2px #05a8f3;
+    animation: waves 4s ease-in-out infinite;
+}
+
+@keyframes waves {
+    0%, 100% {
+        clip-path: polygon(
+            0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%
+        );
+    }
+    50% {
+        clip-path: polygon(
+            0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%
+        );
+    } 
+}
+
+.info-content .main-text {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.info-content p {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+
+
+/* Form section styles */
+.form-container {
+    margin-top: 50px;
+    margin-right: 40px;
+    background-color: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Services Section */
+.services-section {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.services-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.services-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.services-list li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.services-list {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.service-image {
+    border-radius: 50px;
+    border: solid;
+    width: 300px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 20px;
+}
+
+.service-description {
+    flex-grow: 1;
+}
+
+.service-description h3 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.service-description p {
+    font-size: 25px;
+    line-height: 1.5;
+}
+.book-now-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #ff6f61; /* Coral color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.book-now-btn:hover {
+    background-color: #ff3e30; /* Darker coral on hover */
+    transform: translateY(-2px);
+}
+
+/* Schedule Time Button */
+.schedule-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #5a8dee; /* Sky blue color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.schedule-btn a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.schedule-btn:hover {
+    background-color: #3f6cc7; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+/* Footer styles */
+footer {
+    background-color: #A8DCE7;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+}
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .text {font-size: 11px}
+  }
+
+  .slideshow-container {
+    width: 100%;         /* Full width of the parent container */
+    max-width: 800px;    /* Limits the max width */
+    margin: 0 auto;      /* Centers the container on the page */
+}
+
+.slideshow-container img {
+    width: 100%;            /* Adjusts to the width of the container */
+    height: 400px;          /* Set a fixed height */
+    object-fit: cover;      /* Ensures the image fills the area without distortion */
+    border: 5px solid #ddd; /* Optional: Adds a border */
+    border-radius: 8px;     /* Optional: Rounds the corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+}
